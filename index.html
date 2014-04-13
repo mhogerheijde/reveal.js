@@ -40,154 +40,114 @@
 
 		<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+			<div class="slides" >
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h1>Release It!</h1>
+					<h3>by Michael T. Nygard</h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						Releasing (enterprise-grade) software.
 					</p>
 				</section>
 
-				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
+				<section class='fragments'>
+					<h2>The book</h2>
+					<ol>
+						<li class='fragment'>Stabilty</li>
+						<li class='fragment'>Capacity</li>
+						<li class='fragment'>General Design (issues)</li>
+						<li class='fragment'>Operations</li>
+					</ol>
+					<aside class='notes'>
+						<p>So, Release it!. A book by Michael T. Nygard. It's quite a long read so I'll try to spare you the time and cherry-pick some - what I think are - important views. Apart from some cautionary tails and some anekdotes, Michael has devided his book into four parts: [walk trough them].</p>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+						<p>Since we're not over-capacity yet, I'll skip the capacity part. The General Design issues are, in my humble opinion, not our problem. Micheal describes issues for the more "classic" companies. Operations is something we could improve on greatly, but I think that operations is suitable for now and we're already improving on that subject.</p>
+
+						<p>That leaves us with stability. Even though there seems to be some confidence about releasing new features, I myself cringe when confronted with a (sometimes) stupid little bug that brings our software to a grinding halt.
+						Take weekly-email-gate for example. Therefore I want to share some of the views of Michael with you. 
+						</p>
+
 					</aside>
 				</section>
 
-				<!-- Example of nested vertical slides -->
 				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
+					<h2>What's ahead?</h2>
+					<p>
+						<ol>
+							<li>What is stable software</li>
+							<li>My pick from the Stability (anti-)patterns</li>
+							<li>Where can we improve?</li>
+						</ol>
+					</p>
+
+					<aside class="notes">Allright. I'll continue by `defining` stability; from there I'll discuss some of the patterns and anti-patterns described in the book; and while we're on the subject I'll try to <em>put my finger on the sore spot!</em></aside>
+				</section>
+				<section>
+					<h2>KISS</h2>
+					<p class='fragment'>
+						Let's consider our own products only.
+					</p>
+					<aside class="notes">
+						Keep it simple stupid; like with desiginig complex products, lets keep this presentation simple. We'll only consider our own products and won't go into a highly theoretical discussion
+					</aside>
+				</section>
+				<section>
+					<section class='fragments'>
+						<h2>1. Stable software</h2>
+						<p>When do we call software stable?
+							<ul>
+								<li class='fragment'>Uptime?</li>
+								<li class='fragment'>No crashes?</li>
+								<li class='fragment'>No exceptions thrown?</li>
+							</ul>
 						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						<aside class="notes">Go down!</aside>
+					</section>
+					<section class='fragments'>
+						<h2>1. Stable software</h2>
+						<p>Being able to get work done.</p>
+						<p class='fragment'>In our case, that means: planning trips.</p>
+						<aside class='notes'>Michael eventually defines stability as "even when the <i>system</i> is under stress, users can still get work done."</aside>
 					</section>
 					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
+						<h2>1. Stable software</h2>
+						<p>Availability</p>
+						<img src='uptime.png' />
+						<aside class='notes'>To be able to get work done, the system must be available. This month was not too bad. But this is overall availablilty. We had some degrated performance this month as well. Some work could be done; other work coudn't.</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Patterns and anti-patterns</h2>
+						<p>My pick of the litter.</p>
+						<aside class='notes'>I'll try not to go into too much detail; Michael describes a good 19 stability patterns and anti-patterns </aside>
+					</section>
+
+					<section>
+						<h2>Anti-pattern: Integration points</h2>
 					</section>
 					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
+						<h2>Anti-pattern: Chain reactions</h2>
 					</section>
 					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
+						<h2>Anti-pattern: Slow responses</h2>
 					</section>
+					<section>
+						<h2>Anti-pattern: SLA Inversion</h2>
+					</section>
+					<section>
+						1. Timeouts
+						2. Circuit breaker
+						3. Bulkheads
+						4. Steady State
+						5. Fail Fast
+						6. Handshaking
+						7. Test Harnass
+						8. Decoupling Middleware
+					</section>
+
 				</section>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
 
 				<section>
 					<h2>Global State</h2>
@@ -198,63 +158,6 @@
 					</p>
 				</section>
 
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
 
 				<section>
 					<h2>Pretty Code</h2>
@@ -370,8 +273,8 @@ function linkify( selector ) {
 				history: true,
 				center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				theme: "goabout", //Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
