@@ -41,15 +41,18 @@
 		<div class="reveal">
 
 			<div class="slides" >
-				<section>
+				<section class='center' id='welcome'>
 					<h1>Release It!</h1>
 					<h3>by Michael T. Nygard</h3>
 					<p>
 						Releasing (enterprise-grade) software.
 					</p>
+					<aside class='notes'>
+						<p>So, Release it!. A book by Michael T. Nygard. It's quite a long read so I'll try to spare you the time and cherry-pick some - what I think are - important views. Apart from some cautionary tails and some anekdotes, Michael has devided his book into four parts: [walk trough them].</p>
+					</aside>
 				</section>
 
-				<section class='fragments'>
+				<section class='fragments' id='introduction'>
 					<h2>The book</h2>
 					<ol>
 						<li class='fragment'>Stabilty</li>
@@ -58,18 +61,18 @@
 						<li class='fragment'>Operations</li>
 					</ol>
 					<aside class='notes'>
-						<p>So, Release it!. A book by Michael T. Nygard. It's quite a long read so I'll try to spare you the time and cherry-pick some - what I think are - important views. Apart from some cautionary tails and some anekdotes, Michael has devided his book into four parts: [walk trough them].</p>
-
+						<!-- <p>So, Release it!. A book by Michael T. Nygard. It's quite a long read so I'll try to spare you the time and cherry-pick some - what I think are - important views. Apart from some cautionary tails and some anekdotes, Michael has devided his book into four parts: [walk trough them].</p>
+ -->
 						<p>Since we're not over-capacity yet, I'll skip the capacity part. The General Design issues are, in my humble opinion, not our problem. Micheal describes issues for the more "classic" companies. Operations is something we could improve on greatly, but I think that operations is suitable for now and we're already improving on that subject.</p>
 
-						<p>That leaves us with stability. Even though there seems to be some confidence about releasing new features, I myself cringe when confronted with a (sometimes) stupid little bug that brings our software to a grinding halt.
-						Take weekly-email-gate for example. Therefore I want to share some of the views of Michael with you. 
+						<p>That leaves us with stability. Even though there seems to be some confidence about releasing new features, I myself cringe when confronted with a (sometimes stupid) little bug that brings our software to a grinding halt.
+						Take weekly-email-gate for example. Therefore I want to share some of the views of Michael about stability with you. 
 						</p>
 
 					</aside>
 				</section>
 
-				<section>
+				<section id='toc'>
 					<h2>What's ahead?</h2>
 					<p>
 						<ol>
@@ -81,7 +84,7 @@
 
 					<aside class="notes">Allright. I'll continue by `defining` stability; from there I'll discuss some of the patterns and anti-patterns described in the book; and while we're on the subject I'll try to <em>put my finger on the sore spot!</em></aside>
 				</section>
-				<section>
+				<section id='kiss'>
 					<h2>KISS</h2>
 					<p class='fragment'>
 						Let's consider our own products only.
@@ -91,8 +94,9 @@
 					</aside>
 				</section>
 				<section>
-					<section class='fragments'>
-						<h2>1. Stable software</h2>
+					<section class='fragments' id='part-one'>
+						<h2>Part 1</h2>
+						<h3>Stable software</h3>
 						<p>When do we call software stable?
 							<ul>
 								<li class='fragment'>Uptime?</li>
@@ -102,13 +106,13 @@
 						</p>
 						<aside class="notes">Go down!</aside>
 					</section>
-					<section class='fragments'>
-						<h2>1. Stable software</h2>
+					<section class='fragments' id='stablility'>
+						<h3>Stable software</h3>
 						<p>Being able to get work done.</p>
 						<p class='fragment'>In our case, that means: planning trips.</p>
 						<aside class='notes'>Michael eventually defines stability as "even when the <i>system</i> is under stress, users can still get work done."</aside>
 					</section>
-					<section>
+					<section id='availability'>
 						<h2>1. Stable software</h2>
 						<p>Availability</p>
 						<img src='uptime.png' />
@@ -116,146 +120,145 @@
 					</section>
 				</section>
 
-				<section>
-					<section>
-						<h2>Patterns and anti-patterns</h2>
-						<p>My pick of the litter.</p>
-						<aside class='notes'>I'll try not to go into too much detail; Michael describes a good 19 stability patterns and anti-patterns </aside>
-					</section>
-
-					<section>
-						<h2>Anti-pattern: Integration points</h2>
-					</section>
-					<section>
-						<h2>Anti-pattern: Chain reactions</h2>
-					</section>
-					<section>
-						<h2>Anti-pattern: Slow responses</h2>
-					</section>
-					<section>
-						<h2>Anti-pattern: SLA Inversion</h2>
-					</section>
-					<section>
-						1. Timeouts
-						2. Circuit breaker
-						3. Bulkheads
-						4. Steady State
-						5. Fail Fast
-						6. Handshaking
-						7. Test Harnass
-						8. Decoupling Middleware
-					</section>
-
+				<section id='part-two'>
+					<h2>Part 2 & 3<h2>
+					<h3>Patterns and anti-patterns</h3>
+					<p>My pick of the litter.</p>
+					<p>3 Anti-patterns and 4 Patterns.</p>
+					<aside class='notes'>I'll try not to go into too much detail; Michael describes a good total of 19 stability patterns and anti-patterns. I'll pick a few that are either important or can yield quick results. So this is part 2 and 3 together, because I will evaluate Go About during my introduction into the various patterns.</aside>
 				</section>
-
-
+	
 				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
+					<section class='fragments' id='integration-points'>
+						<h2>Anti-pattern 1</h2>
+						<h3>Integration points</h3>
+						<ul>
+							<li class='fragment'>Calls to the outside</li>
+							<li class='fragment'>Internal calls as well! (OTP, ElasticSearch, Database)</li>
+							<li class='fragment'>But even inside Planner+ (Resources calling Services)</li>
+							<li class='fragment'>Most connectors will wait indefinitely for a response!</li>
+							<li class='fragment'>Failing fast is better.</li>
+						</ul>
+						<aside class='notes'>
+							<p><em>[fragment first 2]</em> Both calls to the outside as well as some internal calls could be considered integration points. Those are pretty easy to identify, since they are separated by some sort of socket. (Mainly HTTP).</p>
+							<p><em>[fragment]</em>Even internal calls that make use of different parts of the system could be indicated as integration points.</p>
+							<p><em>[fragment]</em>Many connectors, even the default http-connector from Java, do not have a default timeout.</p>
+							<p><em>[fragment]</em>But even those who do have a timeout, have a typical timeout of 30 seconds. Which is way too long to wait for an error: it is better to fail fast than a slow response, especially when it is a slow fail. Both because it causes user-frustration and because the system occupies resources, that otherwise could be used to process other requests.</p>
 						</aside>
 					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
+					<section class='fragments' id='integration-points-score'>
+						<h2>Integration points</h2>
+						<h3>Our score</h3>
+						<ul class='score'>
+							<li><span class='fragment fail'></span>A database connection</li>
+							<li><span class='fragment fail'></span>A response from OTP</li>
+							<li><span class='fragment fail'></span>Logging in when the API is down</li>
+						</ul>
+					</section>
+				</section>
+				
+				<section>
+					<section id='cascading-failures'>
+						<h2>Anti-pattern 2</h2>
+						<h3>Cascading failures</h3>
+						<p>When failures in some parts of the system, make the rest fail as well</p>
+					</section>
+					<section class='fragments' id='cascading-failures-score'>
+						<h2>Cascading failures</h2>
+						<h3>Our score</h3>
+						<ul class='score'>
+							<li><span class='fragment checkmark'></span>NS API offline</li>
+							<li><span class='fragment checkmark'></span>Locatienet offline</li>
+							<li><span class='fragment partial'></span>Long running queries</li>
+							<li><span class='fragment checkmark'></span>Filespace filling up</li>
+							<li><span class='fragment fail'></span>OTP offline</li>
+							<li><span class='fragment fail'></span>ElasticSearch offline</li>
+						</ul>
 					</section>
 				</section>
 
 				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
+					<section class='fragments' id='sla-inversion'>
+						<h2>Anti-pattern 3</h4>
+						<h3>SLA Inversion</h3>
+
+						<p>SLA's cascade: if all of the services we use guarantee 99,9% then our maximum will ever be about 99,5%<p>
+						<p class='fragment'>We should decouple our SLA guarantees</p>
+						<aside class='notes'>This one is in here for the managers under us :-).</aside>
+					</section>
+					<section class='fragments' id='sla-inversion-score'>
+						<h2>SLA Inversion</h2>
+						<h3>Our score</h3>
+
+						<ul class='score'>
+							<li><span class='fragment unknown'></span>Empty promises</li>
+							<li><span class='fragment fail'></span>Examine dependencies</li>
+							<li><span class='fragment checkmark'></span>Decoupled SLA</li>
+						</ul>
+						<aside class='notes'>Empty promises? You tell me :-) But I do think we didn't carefully examine our dependencies. Realtime results? locatienet? We did - however - decoupled our SLA. That is; in the contract with Veolia, the only numbers that were given were about network, hardware and power availability.</aside>
+					</section>
 				</section>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
+				<section class='fragments' id='timeouts'>
+					<h2>Pattern 1</h2>
+					<h3>Timeouts</h3>
+					<ul class='score'>
+						<li><span class='fragment fail'></span>Apply timeouts to integration points</li>
+						<li><span class='fragment fail'></span>Timeout first, then figure out why</li>
+						<li><span class='fragment fail'></span>Delayed retries (exp. backoff)</li>
+						<li><span class='fragment fail'></span>Count!</li>
+					</ul>
+					<aside class='notes'><p>Apply timeouts to anything that we don't have direct control over. From the code's point of view. So that means database-connections, calls to libraries, IO-wait, etc.</p>
+					<p>When something is taking too long; we don't always care why: we just need to give up for now.</p>
+					<p>When something is important, backoff exponentially. Retry immediately, then a second, then 2 etc.. Every time it fails, increase waiting time exponentially. Last but not least: count how many times a timeout occurs.</p>
+					</aside>
 				</section>
+				<section class='fragments' id='circuit-breaker'>
+					<h2>Pattern 2</h2>
+					<h3>Circuit breaker</h3>
+					<ul class='score'>
+						<li><span class='fragment fail'></span>Stop calling if it's broken</li>
+						<li><span class='fragment fail'></span>Combine with timeouts</li>
+						<li><span class='fragment fail'></span>Report! (pager-duty, statuspage)</li>
+					</ul>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
+					<aside class='notes'><p>Circuit breakers allow us to switch off certain parts of Go About. The Circuit breakers patterns would allow for both automatically and manually tripping the breaker.</p> 
+						<p>Don't call if it doesn't work: like with the weekly-email.</p>
+						<p>If combined with timeouts, you'd be able to automatically trip a breaker</p>
+						<p>A tripped circuit-breaker means degraded performance. It needs to be reported somehwere</p>
+					</aside>
 				</section>
+				<section class='fragments' id='steady-state'>
+					<h2>Pattern 3</h2>
+					<h3>Steady State</h3>
+					<ul class='score'>
+						<li><span class='fragment checkmark'></span>Avoid fiddling</li>
+						<li><span class='fragment checkmark'></span>Purge data with application logic</li>
+						<li><span class='fragment checkmark'></span>Limit caching</li>
+						<li><span class='fragment checkmark'></span>Roll the logs</li>
+					</ul>
+					<aside class='notes'>
+						<p>Steady stateAnything that gathers data will eventually clog. Clean up after anything that collects anything. We were not up to par a while ago, where logs would fill the filesystem and where the amount of saved trips with Large-object data in the database clogged the pipes. But we're doing better now.</p>
 
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+						<p>Avoid needing frequent human interaction; like with our Request-Log. It should've been turned off way sooner than we did. But now we don't have any need for repeated human-interaction anymore.</p>
+						<p>Purge data with app-logic; like our cleanup jobs for not-selected trips.</p>
+						<p>Limit caching: we don't use real caches yet. Checkmark!</p>
+						<p>Roll the logs: we send stuff to external services, logs itself are rolled. We're in the clear</p>
+				</section>
+				<section class='fragments' id='fail-fast'>
+					<h2>Pattern 4</h2>
+					<h3>Fail Fast</h3>
+					<ul class='score'>
+						<li><span class='fragment partially'></span>Avoid slow response: fail fast</li>
+						<li><span class='fragment fail'></span>Verify circuit breaker before calling</li>
+						<li><span class='fragment partially'></span>Do input validation before anything else.</li>
 					</ul>
 				</section>
 
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
+				<section class='center fragments' id='questions'>
+					<h1>Questions?</h1>
+					<p class='fragment'>Well... RTFM! ;-)</p>
 				</section>
-
 			</div>
 
 		</div>
